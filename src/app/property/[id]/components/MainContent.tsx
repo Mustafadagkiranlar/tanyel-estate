@@ -1,9 +1,8 @@
 "use client";
 import { ShareIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import VerticalLine from "./VerticalLine";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import PropertySlider from "./PropertySlider";
 import dynamic from "next/dynamic";
 

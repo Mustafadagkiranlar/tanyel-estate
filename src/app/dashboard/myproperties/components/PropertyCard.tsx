@@ -27,14 +27,12 @@ function createLink({
   listingType,
   lat,
   long,
-  image,
 }: {
   id: string;
   price: number;
   title: string;
   location: string;
   area: string;
-  image: string;
   description: string;
   propertyType: string;
   bedroomNumber: number;
@@ -208,7 +206,6 @@ function PropertyCard({
               listingType,
               lat,
               long,
-              image,
             })}
           >
             <PencilIcon className="h-5 hover:text-green-700 transition-colors" />

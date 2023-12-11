@@ -1,33 +1,34 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react"
 
 function PropertySlider({ property }: { property: Property }) {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const totalSlides = property.photos.length;
-  
-    const nextSlide = () => {
-      setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    };
-  
-    const prevSlide = () => {
-      setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-    };
-  
-    return (
-        <div className="flex items-center justify-center">
-            <div className="relative">
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const totalSlides = property.photos.length;
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  return (
+    <div className="flex items-center justify-center">
+      <div className="relative">
         <div className="flex overflow-hidden">
           {property.photos.map((image, index) => (
             <div
               key={index}
-              className={`w-full flex-none  transition-transform duration-300 ease-in-out${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
+              className={`w-full flex-none  transition-transform duration-300 ease-in-out${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              <img src={image} alt={image} className="h-4/5" />
+              <div>
+                <Image src={image} alt={image} height={800} width={500} />
+              </div>
             </div>
-            
           ))}
         </div>
         <button
@@ -43,10 +44,8 @@ function PropertySlider({ property }: { property: Property }) {
           &gt;
         </button>
       </div>
-        </div>
-    );
-  };
-
-
+    </div>
+  );
+}
 
 export default PropertySlider;

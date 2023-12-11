@@ -8,19 +8,30 @@ const AddProperty = async () => {
   let listingType: ListingType[] = [];
 
   const fetchPropertyTypes = async () => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/propertytype`
-    );
-    const data = await response.json();
-    return data;
+    //implement try catch
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/propertytype`
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
   };
 
   const fetchListingTypes = async () => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/listingtype`
-    );
-    const data = await response.json();
-    return data;
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/listingtype`
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
   };
 
   propertyType = await fetchPropertyTypes();

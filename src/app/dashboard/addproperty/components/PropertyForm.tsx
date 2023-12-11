@@ -13,13 +13,12 @@ const DynamicMapComponent = dynamic(() => import("./LocationTab"), {
   ssr: false,
 });
 
-
 const PropertyForm = ({
   propertyType,
   listingType,
 }: {
-  propertyType: PropertyType[];
-  listingType: ListingType[];
+  propertyType: PropertyType[] | null;
+  listingType: ListingType[] | null;
 }) => {
   const TABS = ["description", "location", "amenities"];
   const [activeTab, setActiveTab] = useState("description");
@@ -124,7 +123,7 @@ const PropertyForm = ({
                 property={property}
                 setProperty={setProperty}
                 propertyTypes={propertyType}
-                lisingTypes={listingType}
+                listingTypes={listingType}
               />
             )}
 

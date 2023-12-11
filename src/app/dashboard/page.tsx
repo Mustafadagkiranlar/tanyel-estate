@@ -1,46 +1,9 @@
-"use client";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import React from "react";
 import MainHeader from "./components/MainHeader";
-import Cookies from "js-cookie";
 import Sidebar from "./components/sidebar";
+import Image from "next/image";
 
 function DashboardPage() {
-  // const router = useRouter();
-  // const [verified, setVerified] = useState(false);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const token = Cookies.get("jwt");
-  //     const res = await fetch("/api/checktoken", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ token }),
-  //     });
-  //     const isVerified = await res.json();
-
-  //     console.log(isVerified);
-  //     if (res.status === 401) {
-  //       setVerified(false);
-  //       router.push("/");
-  //     } else if (res.status === 200) {
-  //       setVerified(true);
-  //     } else {
-  //       router.push("/");
-  //       setVerified(false);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
-  // If not verified, render "Not Authorized" message
-  // if (!verified) {
-  //   return <div>Loading...</div>;
-  // }
-
   return (
     <div className="flex flex-col h-screen">
       <MainHeader />
@@ -50,7 +13,7 @@ function DashboardPage() {
           <div className="flex flex-col gap-4">
           <div className="card w-96 bg-base-100 shadow-xl image-full">
             <figure>
-              <img src={"/images/niceitem.jpg"} alt="Building" />
+              <Image src={"/images/niceitem.jpg"} alt="Building" width={384} height={254} />
             </figure>
             <div className="card-body">
               <h2 className="card-title">Who viewed?</h2>
@@ -64,7 +27,7 @@ function DashboardPage() {
           <div className="flex flex-col gap-4">
           <div className="card w-96 bg-base-100 shadow-xl image-full">
             <figure>
-              <img src={"/images/niceitem.jpg"} alt="Building" />
+              <Image src={"/images/niceitem.jpg"} alt="Building" width={384} height={254} />
             </figure>
             <div className="card-body">
               <h2 className="card-title">Who did what?</h2>

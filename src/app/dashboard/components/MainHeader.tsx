@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 
@@ -9,7 +10,7 @@ function MainHeader(){
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <img src={'/images/logo.png'} alt="Tanyel Logo" className="h-15 w-15 mr-2" />
+              <Image src={'/images/logo.png'} alt="Tanyel Logo" width={112} height={112} className="mr-2" />
             </div>
           </div>
           <div className="flex items-center">

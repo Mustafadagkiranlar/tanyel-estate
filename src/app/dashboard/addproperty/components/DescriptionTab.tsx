@@ -6,13 +6,13 @@ function DescriptionTab({
   handleInputChange,
   property,
   propertyTypes,
-  lisingTypes,
+  listingTypes,
   setProperty,
 }: {
   handleInputChange: any;
   property: Property;
-  propertyTypes: PropertyType[];
-  lisingTypes: ListingType[];
+  propertyTypes: PropertyType[] | null;
+  listingTypes: ListingType[] | null;
   setProperty: React.Dispatch<React.SetStateAction<Property>>;
 }) {
   const [uploadedImageUrls, setUploadedImageUrls] = useState<string[]>([]);
@@ -87,7 +87,7 @@ function DescriptionTab({
                 value={property.propertyType}
               >
                 <option value="">Please Select Property Type</option>
-                {propertyTypes.map((type) => (
+                {!propertyTypes? <option value="">Please refresh the page</option> : propertyTypes.map((type) => (
                   <option key={type._id} value={type.propertyType}>
                     {type.propertyType}
                   </option>
@@ -110,7 +110,7 @@ function DescriptionTab({
                 value={property.listingType}
               >
                 <option value="">Please Select Listing Type</option>
-                {lisingTypes.map((type) => (
+                {!listingTypes? <option value="">Please refresh the page</option> : listingTypes.map((type) => (
                   <option key={type._id} value={type.name}>
                     {type.name}
                   </option>
