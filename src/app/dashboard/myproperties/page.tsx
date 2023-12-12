@@ -6,7 +6,7 @@ import PropertyCard from "./components/PropertyCard";
 
 const Skeleton = () => {
   return (
-    <main className="grid grid-cols-4 w-full p-3">
+    <main className="grid md:grid-cols-4 place-items-center w-full p-3">
       <div className="flex flex-col gap-4 w-52">
         <div className="skeleton h-32 w-full"></div>
         <div className="skeleton h-4 w-28"></div>
@@ -83,14 +83,14 @@ const MyProperties = () => {
     fetchData();
   }, []);
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen mb-40">
       <MainHeader />
       <div className="flex flex-1">
         <Sidebar />
         {skeleton ? (
           <Skeleton />
         ) : (
-          <main className="grid grid-cols-4 w-full p-3">
+          <main className="flex flex-col justify-center items-center gap-4 md:grid md:grid-cols-4 md:place-items-center w-full p-3 mb-44">
             {properties.map((property) => (
               <PropertyCard
                 key={property._id!}

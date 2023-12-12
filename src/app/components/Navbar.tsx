@@ -5,7 +5,7 @@ import React from "react";
 function Navbar() {
   return (
     <>
-      <div className="navbar bg-base-100 px-4 border-t-8 border-tanyel-golden">
+      <div className="navbar bg-base-100 px-4 border-t-8 border-tanyel-golden mb-5">
         <div className="flex-1">
           <Link href="/">
             <Image

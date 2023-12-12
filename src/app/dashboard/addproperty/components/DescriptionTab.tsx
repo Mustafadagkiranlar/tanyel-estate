@@ -160,11 +160,11 @@ function DescriptionTab({
               }}
             </CldUploadWidget>
 
-            <div>
+            {/* <div>
               {uploadedImageUrls.map((url, index) => (
                 <div key={index}>{url}</div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

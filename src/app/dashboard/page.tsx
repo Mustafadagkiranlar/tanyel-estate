@@ -9,7 +9,7 @@ function DashboardPage() {
       <MainHeader />
       <div className="flex flex-1">
         <Sidebar />
-        <main className="flex gap-4 overflow-y-hidden justify-center items-center w-full">
+        <main className="flex flex-col md:flex-row gap-4 justify-center items-center w-full mb-44">
           <div className="flex flex-col gap-4">
           <div className="card w-96 bg-base-100 shadow-xl image-full">
             <figure>

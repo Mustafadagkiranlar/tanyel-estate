@@ -42,7 +42,7 @@ const AddProperty = async () => {
       <MainHeader />
       <div className="flex flex-1">
         <Sidebar />
-        <main className="flex overflow-y-hidden justify-center items-center w-full">
+        <main className="flex overflow-y-hidden justify-center items-center w-full mb-10">
           <PropertyForm propertyType={propertyType} listingType={listingType} />
         </main>
       </div>
