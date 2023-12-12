@@ -55,9 +55,7 @@ export default function Page() {
     if (res.status === 200) {
       const data = await res.json();
       Cookies.set("jwt", data.token, {
-        expires: 1, // Expires in 1 day
-        secure: true,
-        sameSite: "strict",
+        expires: 1,
       });
       router.push("/dashboard");
       return;

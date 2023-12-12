@@ -23,7 +23,7 @@ function PropertyCard({
 }) {
   return (
     <div
-      className="rounded-custom bg-card-color flex flex-col pb-16 border-border-color border-0.5 w-card"
+      className="rounded-custom bg-card-color flex flex-col md:pb-16 border-border-color border-0.5 w-card my-4 md:my-0"
       style={divStyles}
     >
       <Link href={`${process.env.NEXT_PUBLIC_BASE_URL!}/property/${link}`}>

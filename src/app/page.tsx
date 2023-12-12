@@ -112,12 +112,12 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="flex mx-14 gap-2">
+      <div className="flex justify-center md:justify-normal md:mx-14 gap-2">
         <Button name={mapButtonText} aFunction={toggleMapVisibility} />
         <Button name={filterButtonText} aFunction={toggleFilterVisibility} />
       </div>
       <DynamicMapComponent mapVisibility={mapVisibility} properties={properties}/>
-      <div className="flex mt-6">
+      <div className="md:flex mt-6">
         <Filters filterVisibility={filterVisibility} />
         <div className="flex-grow">
           <ContentContainer>

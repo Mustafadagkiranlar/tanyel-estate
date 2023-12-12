@@ -13,8 +13,8 @@ function Filters({ filterVisibility }: { filterVisibility: boolean }) {
   return (
     <>
       {filterVisibility ? (
-        <div className="ml-14">
-          <div className="w-96">
+        <div className="md:ml-14">
+          <div className="px-3 md:px-0 md:w-96">
             <div className="collapse rounded-custom collapse-plus bg-card-color border-0.5">
               <input
                 type="radio"

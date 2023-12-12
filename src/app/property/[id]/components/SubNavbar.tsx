@@ -6,7 +6,7 @@ import VerticalLine from "./VerticalLine";
 
 function SubNavbar() {
   return (
-    <div className="flex justify-center gap-16 items-center border-y-0.5 border-black py-4 mx-4">
+    <div className="flex justify-center gap-5 md:gap-16 items-center border-y-0.5 border-black py-4 mx-4">
       <Link href="/overview">
         <p className="font-medium text-lg">Overview</p>
       </Link>

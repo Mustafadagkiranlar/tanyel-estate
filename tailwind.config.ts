@@ -15,6 +15,7 @@ const config: Config = {
         "border-color": "#E6E3D9",
         "footer-gray-light": "#3C414C",
         "footer-gray-dark": "#2C2F36",
+        "tanyel-golden": "#C19F63",
       },
       width: {
         card: "293px",

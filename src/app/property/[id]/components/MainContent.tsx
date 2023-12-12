@@ -28,16 +28,16 @@ function MainContent({ property }: { property: Property }) {
           alt={"hero image"}
         />
       </div>
-      <div className="text-center bg-card-color my-6 mx-14 rounded-xl py-16 px-24">
+      <div className="text-center bg-card-color my-6 md:mx-14 rounded-xl py-16 px-24">
         <p className="text-5xl font-extralight">
           {property.title.toLocaleUpperCase()}
         </p>
-        <div className="text-2xl flex justify-center gap-16 my-14">
+        <div className="text-2xl flex justify-center gap-4 md:gap-16 my-14">
           <p>${property.price}</p>
           <VerticalLine />
-          <p>{property.area}</p>
-          <VerticalLine />
           <p>{property.location}</p>
+          <VerticalLine />
+          <p>{property.area}</p>
         </div>
         <p className="text-center">{property.description}</p>
 
@@ -50,12 +50,12 @@ function MainContent({ property }: { property: Property }) {
 
       <PropertySlider property={property} />
 
-      <DynamicMapComponent property={property}  />
+      <DynamicMapComponent property={property} />
 
       <div className="mx-14 my-52">
         <p className="text-2xl mb-3">Amenities</p>
 
-        <div className="grid grid-cols-5">
+        <div className="grid md:grid-cols-5">
           <div className="flex gap-4 mt-4">
             <Image src={"/images/dot.png"} alt="dot" width={27} height={27} />
             <div className="flex gap-2">
