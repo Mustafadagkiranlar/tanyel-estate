@@ -106,6 +106,7 @@ function PropertiesContainer({ properties }: { properties: Property[] }) {
         <div
           className="rounded-custom bg-card-color flex flex-col border-border-color border-0.5 w-full mb-3"
           style={divStyles}
+          key={property._id}
         >
           <ToastContainer />
           <Link
