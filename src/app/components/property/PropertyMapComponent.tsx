@@ -14,13 +14,14 @@ const center = { lat: 35.1254, lng: 33.9435 };
 
 export default function PropertyMapComponent({ property }: { property: Property }) {
   return (
-    <div className="mx-5 mt-4">
+    <div className="mx-5 mt-4" id="map">
       <MapContainer
         center={center}
         zoom={8}
         scrollWheelZoom={true}
         style={containerStyle}
         className="rounded-md"
+        attributionControl={false}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

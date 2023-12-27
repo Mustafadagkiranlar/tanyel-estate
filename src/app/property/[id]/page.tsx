@@ -1,6 +1,6 @@
 import React from "react";
-import SubNavbar from "./components/SubNavbar";
-import MainContent from "./components/MainContent";
+import SubNavbar from "@/app/components/property/SubNavbar";
+import MainContent from "@/app/components/property/MainContent";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 

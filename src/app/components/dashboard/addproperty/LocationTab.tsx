@@ -27,14 +27,20 @@ function LocationTab({
   property: Property;
   setProperty: any;
 }) {
+
+  const [address, setAddress] = useState("");
+
   function Addmarkertoclick() {
     const map = useMapEvents({
       click(e) {
-        const {lat, lng} = e.latlng;
+        const { lat, lng } = e.latlng;
         setProperty({ ...property, lat, long: lng });
       },
     });
     return <></>;
+  }
+  function handleOnBlur() {
+    setAddress(property.location);
   }
   return (
     <div className="space-y-6">
@@ -58,6 +64,7 @@ function LocationTab({
             value={property.location}
             required
             className="input input-bordered w-full"
+            onBlur={handleOnBlur}
           />
         </div>
 
@@ -68,6 +75,7 @@ function LocationTab({
             scrollWheelZoom={true}
             style={containerStyle}
             className="rounded-md"
+            attributionControl={false}
           >
             <Addmarkertoclick />
             {/* <MyComponent /> */}
@@ -96,7 +104,6 @@ function LocationTab({
             </Marker>
           </MapContainer>
         </div>
-
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ function PropertySlider({ property }: { property: Property }) {
   };
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center" id="gallery">
       <div className="relative">
         <div className="flex overflow-hidden">
           {property.photos.map((image, index) => (

@@ -62,18 +62,9 @@ export async function POST(request: Request) {
 
   try {
     const db = await connectEstate();
-    const property = await db.collection("properties").findOne({ title });
-    if (property) {
-      return new Response(JSON.stringify({ message: "Property exists" }), {
-        status: 404,
-      });
-    }
-
-    const formattedTitle =
-      title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
 
     const newProperty = {
-      title:formattedTitle,
+      title,
       description,
       price,
       photos,
@@ -157,11 +148,9 @@ export async function PUT(request:Request){
         status: 404,
       });
     }
-    const formattedTitle =
-      title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
 
     const newProperty = {
-      title:formattedTitle,
+      title,
       description,
       price,
       photos,

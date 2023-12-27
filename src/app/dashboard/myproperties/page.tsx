@@ -1,118 +1,24 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import MainHeader from "../components/MainHeader";
-import Sidebar from "../components/sidebar";
-import PropertyCard from "./components/PropertyCard";
+import React from "react";
+import MainHeader from "@/app/components/dashboard/MainHeader";
+import Bottombar from "@/app/components/dashboard/Bottombar";
+import { serverAPILink } from "@/app/constants/serverURL";
+import PropertiesContainer from "@/app/components/dashboard/myproperties/PropertiesContainer";
 
-const Skeleton = () => {
-  return (
-    <main className="grid md:grid-cols-4 place-items-center w-full p-3">
-      <div className="flex flex-col gap-4 w-52">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-      </div>
+async function fetchProperties() {
+  const response = await fetch(`${serverAPILink}/property`, {
+    method: "GET",
+  });
+  return await response.json();
+}
 
-      <div className="flex flex-col gap-4 w-52">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-      </div>
-
-      <div className="flex flex-col gap-4 w-52">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-      </div>
-
-      <div className="flex flex-col gap-4 w-52">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-      </div>
-      <div className="flex flex-col gap-4 w-52">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-      </div>
-      <div className="flex flex-col gap-4 w-52">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-      </div>
-      <div className="flex flex-col gap-4 w-52">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-      </div>
-      <div className="flex flex-col gap-4 w-52">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-      </div>
-    </main>
-  );
-};
-
-const MyProperties = () => {
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [skeleton, setSkeleton] = useState(true);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch("/api/property", {
-          method: "GET",
-        });
-        setProperties(await response.json());
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setSkeleton(false);
-      }
-    }
-
-    fetchData();
-  }, []);
+const MyProperties = async () => {
+  const properties: Property[] = await fetchProperties();
   return (
     <div className="flex flex-col h-screen mb-40">
       <MainHeader />
       <div className="flex flex-1">
-        <Sidebar />
-        {skeleton ? (
-          <Skeleton />
-        ) : (
-          <main className="flex flex-col justify-center items-center gap-4 md:grid md:grid-cols-4 md:place-items-center w-full p-3 mb-44">
-            {properties.map((property) => (
-              <PropertyCard
-                key={property._id!}
-                id={property._id!}
-                price={property.price}
-                location={property.location}
-                area={property.area}
-                title={property.title}
-                image={property.photos[0]}
-                description={property.description}
-                propertyType={property.propertyType}
-                bedroomNumber={property.bedroomNumber}
-                bathroomNumber={property.bathroomNumber}
-                amenities={property.amenities}
-                listingType={property.listingType}
-                lat={property.lat}
-                long={property.long}
-                photos={property.photos}
-              />
-            ))}
-          </main>
-        )}
+        <Bottombar />
+        <PropertiesContainer properties={properties} />
       </div>
     </div>
   );

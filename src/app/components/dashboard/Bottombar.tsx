@@ -1,14 +1,18 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   BuildingStorefrontIcon,
   HomeIcon,
   PlusCircleIcon,
 } from "@heroicons/react/24/outline";
 
-function Icons({ icon, link, isActive }: {
+function Icons({
+  icon,
+  link,
+  isActive,
+}: {
   icon: React.ReactNode;
   link: string;
   isActive: boolean;
@@ -20,18 +24,29 @@ function Icons({ icon, link, isActive }: {
   );
 }
 
-export default function Sidebar() {
-  const pathname = usePathname()
+export default function Bottombar() {
+  const pathname = usePathname();
   const links = [
     { path: "/dashboard", icon: <HomeIcon className="h-5 w-5" /> },
-    { path: "/dashboard/addproperty", icon: <PlusCircleIcon className="h-5 w-5" /> },
-    { path: "/dashboard/myproperties", icon: <BuildingStorefrontIcon className="h-5 w-5" /> },
+    {
+      path: "/dashboard/addproperty",
+      icon: <PlusCircleIcon className="h-5 w-5" />,
+    },
+    {
+      path: "/dashboard/myproperties",
+      icon: <BuildingStorefrontIcon className="h-5 w-5" />,
+    },
   ];
 
   return (
     <nav className="btm-nav btm-nav-md">
       {links.map(({ path, icon }) => (
-        <Icons key={path} icon={icon} link={path} isActive={pathname === path} />
+        <Icons
+          key={path}
+          icon={icon}
+          link={path}
+          isActive={pathname === path}
+        />
       ))}
     </nav>
   );

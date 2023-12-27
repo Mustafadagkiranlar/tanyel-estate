@@ -1,7 +1,7 @@
 import React from "react";
-import MainHeader from "../components/MainHeader";
-import Sidebar from "../components/sidebar";
-import PropertyForm from "./components/PropertyForm";
+import MainHeader from "@/app/components/dashboard/MainHeader";
+import Bottombar from "@/app/components/dashboard/Bottombar";
+import PropertyForm from "@/app/components/dashboard/addproperty/PropertyForm";
 
 const AddProperty = async () => {
   let propertyType: PropertyType[] = [];
@@ -41,10 +41,8 @@ const AddProperty = async () => {
     <div className="flex flex-col h-screen">
       <MainHeader />
       <div className="flex flex-1">
-        <Sidebar />
-        <main className="flex overflow-y-hidden justify-center items-center w-full mb-10">
-          <PropertyForm propertyType={propertyType} listingType={listingType} />
-        </main>
+        <Bottombar />
+        <PropertyForm propertyType={propertyType} listingType={listingType} />
       </div>
     </div>
   );

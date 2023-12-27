@@ -5,6 +5,7 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import MarkerIcon from "leaflet/dist/images/marker-icon.png";
 import MarkerShadow from "leaflet/dist/images/marker-shadow.png";
+import Link from "next/link";
 
 const containerStyle = {
   width: "100%",
@@ -29,6 +30,7 @@ export default function MapComponent({
             scrollWheelZoom={true}
             style={containerStyle}
             className="rounded-md"
+            attributionControl={false}
           >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -48,11 +50,12 @@ export default function MapComponent({
                 }
               >
                 <Popup>
-                {property.title}
-                <br />
-                  {property.location}
+                  {property.title}
                   <br />
-                  ${property.price}
+                  {property.location}
+                  <br />{property.area} m<sup>2</sup>
+                  <br />${property.price}
+                  <br /> <Link className="font-medium text-lg" href={`/property/${property._id}`}>View</Link>
                 </Popup>
               </Marker>
             ))}

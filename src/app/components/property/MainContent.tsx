@@ -28,8 +28,8 @@ function MainContent({ property }: { property: Property }) {
           alt={"hero image"}
         />
       </div>
-      <div className="text-center bg-card-color my-6 md:mx-14 rounded-xl py-16 px-24">
-        <p className="text-5xl font-extralight">
+      <div id="overview" className="text-center bg-card-color my-6 md:mx-14 rounded-xl py-16 px-3 md:px-24">
+        <p className="text-3xl md:text-5xl font-extralight text-center">
           {property.title.toLocaleUpperCase()}
         </p>
         <div className="text-2xl flex justify-center gap-4 md:gap-16 my-14">
@@ -37,11 +37,11 @@ function MainContent({ property }: { property: Property }) {
           <VerticalLine />
           <p>{property.location}</p>
           <VerticalLine />
-          <p>{property.area}</p>
+          <p>{property.area} m<sup>2</sup></p>
         </div>
         <p className="text-center">{property.description}</p>
 
-        <div className="flex justify-center mt-14">
+        <div className="flex justify-center mt-14" id="share">
           <button className="flex gap-2">
             <ShareIcon className="h-8" /> <p className="text-xl">Share</p>
           </button>

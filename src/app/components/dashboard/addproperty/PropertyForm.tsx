@@ -77,7 +77,6 @@ const PropertyForm = ({
     }
   }, [searchParams]);
 
-
   const getButtonClass = (activeTab: string, tab: string) => {
     return `py-4 px-1 text-sm font-medium rounded-t-lg border-b-2 ${
       activeTab === tab
@@ -95,57 +94,59 @@ const PropertyForm = ({
   }, [getParams]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 w-full md:p-8">
-      <ToastContainer />
-      <div className="w-full max-w-4xl space-y-8">
-        <h2 className="mt-6 text-center text-2xl md:text-3xl font-extrabold text-gray-900">
-          {searchParams.get("edit") === "true"
-            ? "Edit Property"
-            : "Add Property"}
-        </h2>
-        <div className="border-b border-gray-200">
-          <nav className="flex overflow-x-auto space-x-1 sm:space-x-8">
-            {TABS.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={getButtonClass(activeTab, tab)}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            ))}
-          </nav>
+    <main className="flex overflow-y-hidden justify-center items-center w-full mb-10">
+      <div className="min-h-screen flex items-center justify-center p-4 w-full md:p-8">
+        <ToastContainer />
+        <div className="w-full max-w-4xl space-y-8">
+          <h2 className="mt-6 text-center text-2xl md:text-3xl font-extrabold text-gray-900">
+            {searchParams.get("edit") === "true"
+              ? "Edit Property"
+              : "Add Property"}
+          </h2>
+          <div className="border-b border-gray-200">
+            <nav className="flex overflow-x-auto space-x-1 sm:space-x-8">
+              {TABS.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={getButtonClass(activeTab, tab)}
+                >
+                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
+            </nav>
 
-          <form className="mt-8 space-y-6">
-            {activeTab === "description" && (
-              <DescriptionTab
-                handleInputChange={handleInputChange}
-                property={property}
-                setProperty={setProperty}
-                propertyTypes={propertyType}
-                listingTypes={listingType}
-              />
-            )}
+            <form className="mt-8 space-y-6">
+              {activeTab === "description" && (
+                <DescriptionTab
+                  handleInputChange={handleInputChange}
+                  property={property}
+                  setProperty={setProperty}
+                  propertyTypes={propertyType}
+                  listingTypes={listingType}
+                />
+              )}
 
-            {activeTab === "location" && (
-              <DynamicMapComponent
-                handleInputChange={handleInputChange}
-                property={property}
-                setProperty={setProperty}
-              />
-            )}
+              {activeTab === "location" && (
+                <DynamicMapComponent
+                  handleInputChange={handleInputChange}
+                  property={property}
+                  setProperty={setProperty}
+                />
+              )}
 
-            {activeTab === "amenities" && (
-              <AmenitiesTab
-                handleInputChange={handleInputChange}
-                property={property}
-                setProperty={setProperty}
-              />
-            )}
-          </form>
+              {activeTab === "amenities" && (
+                <AmenitiesTab
+                  handleInputChange={handleInputChange}
+                  property={property}
+                  setProperty={setProperty}
+                />
+              )}
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

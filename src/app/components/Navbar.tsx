@@ -9,11 +9,11 @@ function Navbar() {
         <div className="flex-1">
           <Link href="/">
             <Image
-              src="/images/logo.png"
-              alt="Logo"
-              width={200}
-              height={200}
-              layout="responsive"
+              src={"/images/logo.png"}
+              alt="Tanyel Logo"
+              width={112}
+              height={112}
+              className="mr-2"
             />
           </Link>
         </div>
@@ -75,9 +75,9 @@ function Navbar() {
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            style={{zIndex:9999}}
+            style={{ zIndex: 9999 }}
           >
-             <li>
+            <li>
               <Link href="/">Home</Link>
             </li>
             <li>
