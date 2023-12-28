@@ -26,7 +26,7 @@ function PropertySlider({ property }: { property: Property }) {
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
               <div className="flex justify-center">
-                <div className="h-96 w-96">
+                <div className="h-96">
                 <Image src={image} alt={image} height={800} width={500} />
                 </div>
               </div>
