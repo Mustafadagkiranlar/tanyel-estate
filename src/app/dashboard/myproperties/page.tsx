@@ -7,6 +7,7 @@ import PropertiesContainer from "@/app/components/dashboard/myproperties/Propert
 async function fetchProperties() {
   const response = await fetch(`${serverAPILink}/property`, {
     method: "GET",
+    cache: "no-store",
   });
   return await response.json();
 }

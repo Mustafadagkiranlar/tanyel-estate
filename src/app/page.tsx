@@ -6,6 +6,7 @@ import MainComponents from "./components/home/MainComponents";
 async function getProperties() {
   const res = await fetch(`${serverAPILink}/property`, {
     method: "GET",
+    cache: "no-store",
   });
   const data: Property[] = await res.json();
   return data;
