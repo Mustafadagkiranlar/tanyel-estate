@@ -1,11 +1,11 @@
-"use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import L from "leaflet";
 import {
   MapContainer,
   Marker,
   Popup,
   TileLayer,
+  useMap,
   useMapEvents,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -27,8 +27,7 @@ function LocationTab({
   property: Property;
   setProperty: any;
 }) {
-
-  const [address, setAddress] = useState("");
+  const [coords, setCoords] = useState({ lat: 0, lng: 0 });
 
   function Addmarkertoclick() {
     const map = useMapEvents({
@@ -39,14 +38,35 @@ function LocationTab({
     });
     return <></>;
   }
-  function handleOnBlur() {
-    setAddress(property.location);
+
+  function FlyToLocation() {
+    const map = useMap();
+    useEffect(() => {
+      if (coords.lat && coords.lng) {
+        map.flyTo([coords.lat, coords.lng], 14);
+      }
+    }, [map]);
+    return null;
   }
+
+  async function handleOnBlur() {
+    try {
+      const response = await fetch(
+        `https://geocode.maps.co/search?q=${property.location}&api_key=658d4486903cb849870995mak5a256a`
+      );
+      const data = await response.json();
+      setCoords({ lat: data[0].lat, lng: data[0].lon });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div className="block text-sm font-medium text-gray-700">
         Property Location
       </div>
+      {property.lat} { property.long}
       <div className="grid grid-cols-1 gap-4">
         <div className="block text-sm font-medium text-gray-700">
           <label
@@ -78,9 +98,9 @@ function LocationTab({
             attributionControl={false}
           >
             <Addmarkertoclick />
-            {/* <MyComponent /> */}
+            <FlyToLocation />
             <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker

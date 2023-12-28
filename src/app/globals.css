@@ -9,3 +9,7 @@ html {
 #overview, #map, #gallery, #share {
   scroll-margin-top: 50px;
 }
+
+.leaflet-tile {
+  filter: hue-rotate(170deg) !important;
+}

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Cookies from "js-cookie";
-import { toast } from "react-toastify";
+import toast from 'react-hot-toast';
 
 function AmenitiesTab({
   handleInputChange,
@@ -26,8 +26,25 @@ function AmenitiesTab({
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const token = Cookies.get("jwt");
-    console.log(property);
     if (searchParams.get("edit") === null) {
+
+      // check if all the fields are filled for property
+      if (
+        !property.title ||
+        !property.description ||
+        !property.price ||
+        !property.photos ||
+        !property.location ||
+        !property.propertyType ||
+        !property.area ||
+        !property.listingType ||
+        !property.lat ||
+        !property.long
+      ) {
+        toast.error("Please fill all the fields");
+        return;
+      }
+
       try {
         const response = await fetch("/api/property", {
           method: "POST",
@@ -40,43 +57,15 @@ function AmenitiesTab({
         });
 
         if (response.ok) {
-          toast.success("Property added successfully", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-          console.log("Property added successfully");
+          toast.success("Property added successfully");
         } else {
-          toast.error("Failed to add property refresh page and try again", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-          console.log("Failed to add property");
-          console.log(property);
+          toast.error("Failed to add property refresh page and try again");
+          // console.log("Failed to add property");
+          // console.log(property);
         }
       } catch (error) {
-        toast.error("Un expected error refresh page and try again", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        console.error("Error:", error);
+        toast.error("Un expected error refresh page and try again");
+        // console.error("Error:", error);
       }
     }
 
@@ -92,41 +81,14 @@ function AmenitiesTab({
           body: JSON.stringify({ id: searchParams.get("id"), ...property }),
         });
         if (response.ok) {
-          toast.success("Property updated successfully", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
+          toast.success("Property updated successfully");
           console.log("Property updated successfully");
         } else {
-          toast.error("Failed to update property refresh page and try again", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
+          toast.error("Failed to update property refresh page and try again");
           console.log("Failed to update property");
         }
       } catch (error) {
-        toast.error("Un expected error refresh page and try again", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        toast.error("Un expected error refresh page and try again");
         console.error("Error:", error);
       }
       return;
@@ -134,7 +96,7 @@ function AmenitiesTab({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 mt-6">
       <div className="block text-sm font-medium text-gray-700">
         Property Amenities
       </div>

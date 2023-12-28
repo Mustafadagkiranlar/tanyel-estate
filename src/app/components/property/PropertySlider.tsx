@@ -20,12 +20,12 @@ function PropertySlider({ property }: { property: Property }) {
           {property.photos.map((image, index) => (
             <div
               key={index}
-              className={`w-full flex-none  transition-transform duration-300 ease-in-out${
+              className={`w-full flex-none transition-transform duration-300 ease-in-out${
                 index === currentSlide ? "opacity-100" : "opacity-0"
               }`}
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              <div>
+              <div className="flex justify-center">
                 <Image src={image} alt={image} height={800} width={500} />
               </div>
             </div>

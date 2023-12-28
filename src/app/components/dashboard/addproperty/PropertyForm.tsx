@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import dynamic from "next/dynamic";
+import { Toaster } from 'react-hot-toast';
 
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
@@ -96,7 +97,7 @@ const PropertyForm = ({
   return (
     <main className="flex overflow-y-hidden justify-center items-center w-full mb-10">
       <div className="min-h-screen flex items-center justify-center p-4 w-full md:p-8">
-        <ToastContainer />
+        <Toaster />
         <div className="w-full max-w-4xl space-y-8">
           <h2 className="mt-6 text-center text-2xl md:text-3xl font-extrabold text-gray-900">
             {searchParams.get("edit") === "true"
@@ -104,45 +105,25 @@ const PropertyForm = ({
               : "Add Property"}
           </h2>
           <div className="border-b border-gray-200">
-            <nav className="flex overflow-x-auto space-x-1 sm:space-x-8">
-              {TABS.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={getButtonClass(activeTab, tab)}
-                >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                </button>
-              ))}
-            </nav>
+            <DescriptionTab
+              handleInputChange={handleInputChange}
+              property={property}
+              setProperty={setProperty}
+              propertyTypes={propertyType}
+              listingTypes={listingType}
+            />
 
-            <form className="mt-8 space-y-6">
-              {activeTab === "description" && (
-                <DescriptionTab
-                  handleInputChange={handleInputChange}
-                  property={property}
-                  setProperty={setProperty}
-                  propertyTypes={propertyType}
-                  listingTypes={listingType}
-                />
-              )}
+            <DynamicMapComponent
+              handleInputChange={handleInputChange}
+              property={property}
+              setProperty={setProperty}
+            />
 
-              {activeTab === "location" && (
-                <DynamicMapComponent
-                  handleInputChange={handleInputChange}
-                  property={property}
-                  setProperty={setProperty}
-                />
-              )}
-
-              {activeTab === "amenities" && (
-                <AmenitiesTab
-                  handleInputChange={handleInputChange}
-                  property={property}
-                  setProperty={setProperty}
-                />
-              )}
-            </form>
+            <AmenitiesTab
+              handleInputChange={handleInputChange}
+              property={property}
+              setProperty={setProperty}
+            />
           </div>
         </div>
       </div>
