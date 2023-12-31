@@ -21,14 +21,19 @@ function MainContent({ property }: { property: Property }) {
   return (
     <div className="m-4">
       <div className="flex justify-center">
-        <Image
-          src={property.photos[0]}
-          width={960}
-          height={540}
-          alt={"hero image"}
-        />
+        <div className="h-80 w-52">
+          <Image
+            quality={100}
+            src={property.photos[0]}
+            layout="fill"
+            alt={"hero image"}
+          />
+        </div>
       </div>
-      <div id="overview" className="text-center bg-card-color my-6 md:mx-14 rounded-xl py-16 px-3 md:px-24">
+      <div
+        id="overview"
+        className="text-center bg-card-color my-6 md:mx-14 rounded-xl py-16 px-3 md:px-24"
+      >
         <p className="text-3xl md:text-5xl font-extralight text-center">
           {property.title.toLocaleUpperCase()}
         </p>
@@ -37,7 +42,9 @@ function MainContent({ property }: { property: Property }) {
           <VerticalLine />
           <p>{property.location}</p>
           <VerticalLine />
-          <p>{property.area} m<sup>2</sup></p>
+          <p>
+            {property.area} m<sup>2</sup>
+          </p>
         </div>
         <p className="text-center">{property.description}</p>
 
