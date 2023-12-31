@@ -117,10 +117,11 @@ function PropertiesContainer({ properties }: { properties: Property[] }) {
             <Image
                 src={property.photos[0]}
                 alt="house"
-                width={291}
-                height={194}
-                layout="responsive"
-                className="rounded-t-custom"
+                width={300}
+                  height={200}
+                  objectFit="cover"
+                  layout="responsive"
+                  className="rounded-t-custom"
               />
             <div className="p-7">
               <p className="text-faded-text text-xl mb-2">

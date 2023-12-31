@@ -27,7 +27,14 @@ function PropertySlider({ property }: { property: Property }) {
             >
               <div className="flex justify-center">
                 <div className="h-96">
-                <Image src={image} alt={image} height={800} width={500} />
+                  <Image
+                    src={image}
+                    alt={image}
+                    height={800}
+                    width={500}
+                    objectFit="cover"
+                    layout="responsive"
+                  />
                 </div>
               </div>
             </div>

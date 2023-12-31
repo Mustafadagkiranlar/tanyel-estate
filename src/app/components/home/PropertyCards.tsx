@@ -21,14 +21,15 @@ function PropertyCards({ properties }: { properties: Property[] }) {
                 property._id
               }`}
             >
-              <Image
-                src={property.photos[0]}
-                alt="house"
-                width={291}
-                height={194}
-                layout="responsive"
-                className="rounded-t-custom"
-              />
+                <Image
+                  src={property.photos[0]}
+                  alt="house"
+                  width={300}
+                  height={200}
+                  objectFit="cover"
+                  layout="responsive"
+                  className="rounded-t-custom"
+                />
               <div className="p-7">
                 <p className="text-faded-text text-xl mb-2">
                   {property.location}
